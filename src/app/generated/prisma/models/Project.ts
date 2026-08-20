@@ -236,7 +236,7 @@ export type ProjectWhereInput = {
   isActive?: Prisma.BoolFilter<"Project"> | boolean
   finishDateProgrammed?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
   realFinishDate?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
-  materials?: Prisma.MaterialListRelationFilter
+  materialRequests?: Prisma.MaterialRequestListRelationFilter
 }
 
 export type ProjectOrderByWithRelationInput = {
@@ -247,7 +247,7 @@ export type ProjectOrderByWithRelationInput = {
   isActive?: Prisma.SortOrder
   finishDateProgrammed?: Prisma.SortOrderInput | Prisma.SortOrder
   realFinishDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  materials?: Prisma.MaterialOrderByRelationAggregateInput
+  materialRequests?: Prisma.MaterialRequestOrderByRelationAggregateInput
 }
 
 export type ProjectWhereUniqueInput = Prisma.AtLeast<{
@@ -261,7 +261,7 @@ export type ProjectWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"Project"> | boolean
   finishDateProgrammed?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
   realFinishDate?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
-  materials?: Prisma.MaterialListRelationFilter
+  materialRequests?: Prisma.MaterialRequestListRelationFilter
 }, "id">
 
 export type ProjectOrderByWithAggregationInput = {
@@ -299,7 +299,7 @@ export type ProjectCreateInput = {
   isActive?: boolean
   finishDateProgrammed?: Date | string | null
   realFinishDate?: Date | string | null
-  materials?: Prisma.MaterialCreateNestedManyWithoutProjectsInput
+  materialRequests?: Prisma.MaterialRequestCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUncheckedCreateInput = {
@@ -310,7 +310,7 @@ export type ProjectUncheckedCreateInput = {
   isActive?: boolean
   finishDateProgrammed?: Date | string | null
   realFinishDate?: Date | string | null
-  materials?: Prisma.MaterialUncheckedCreateNestedManyWithoutProjectsInput
+  materialRequests?: Prisma.MaterialRequestUncheckedCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUpdateInput = {
@@ -320,7 +320,7 @@ export type ProjectUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   finishDateProgrammed?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   realFinishDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  materials?: Prisma.MaterialUpdateManyWithoutProjectsNestedInput
+  materialRequests?: Prisma.MaterialRequestUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectUncheckedUpdateInput = {
@@ -331,7 +331,7 @@ export type ProjectUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   finishDateProgrammed?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   realFinishDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  materials?: Prisma.MaterialUncheckedUpdateManyWithoutProjectsNestedInput
+  materialRequests?: Prisma.MaterialRequestUncheckedUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectCreateManyInput = {
@@ -403,14 +403,9 @@ export type ProjectSumOrderByAggregateInput = {
   status?: Prisma.SortOrder
 }
 
-export type ProjectListRelationFilter = {
-  every?: Prisma.ProjectWhereInput
-  some?: Prisma.ProjectWhereInput
-  none?: Prisma.ProjectWhereInput
-}
-
-export type ProjectOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
+export type ProjectScalarRelationFilter = {
+  is?: Prisma.ProjectWhereInput
+  isNot?: Prisma.ProjectWhereInput
 }
 
 export type StringFieldUpdateOperationsInput = {
@@ -437,45 +432,21 @@ export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
 }
 
-export type ProjectCreateNestedManyWithoutMaterialsInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutMaterialsInput, Prisma.ProjectUncheckedCreateWithoutMaterialsInput> | Prisma.ProjectCreateWithoutMaterialsInput[] | Prisma.ProjectUncheckedCreateWithoutMaterialsInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutMaterialsInput | Prisma.ProjectCreateOrConnectWithoutMaterialsInput[]
-  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+export type ProjectCreateNestedOneWithoutMaterialRequestsInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutMaterialRequestsInput, Prisma.ProjectUncheckedCreateWithoutMaterialRequestsInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutMaterialRequestsInput
+  connect?: Prisma.ProjectWhereUniqueInput
 }
 
-export type ProjectUncheckedCreateNestedManyWithoutMaterialsInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutMaterialsInput, Prisma.ProjectUncheckedCreateWithoutMaterialsInput> | Prisma.ProjectCreateWithoutMaterialsInput[] | Prisma.ProjectUncheckedCreateWithoutMaterialsInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutMaterialsInput | Prisma.ProjectCreateOrConnectWithoutMaterialsInput[]
-  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+export type ProjectUpdateOneRequiredWithoutMaterialRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutMaterialRequestsInput, Prisma.ProjectUncheckedCreateWithoutMaterialRequestsInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutMaterialRequestsInput
+  upsert?: Prisma.ProjectUpsertWithoutMaterialRequestsInput
+  connect?: Prisma.ProjectWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProjectUpdateToOneWithWhereWithoutMaterialRequestsInput, Prisma.ProjectUpdateWithoutMaterialRequestsInput>, Prisma.ProjectUncheckedUpdateWithoutMaterialRequestsInput>
 }
 
-export type ProjectUpdateManyWithoutMaterialsNestedInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutMaterialsInput, Prisma.ProjectUncheckedCreateWithoutMaterialsInput> | Prisma.ProjectCreateWithoutMaterialsInput[] | Prisma.ProjectUncheckedCreateWithoutMaterialsInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutMaterialsInput | Prisma.ProjectCreateOrConnectWithoutMaterialsInput[]
-  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutMaterialsInput | Prisma.ProjectUpsertWithWhereUniqueWithoutMaterialsInput[]
-  set?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  disconnect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  delete?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutMaterialsInput | Prisma.ProjectUpdateWithWhereUniqueWithoutMaterialsInput[]
-  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutMaterialsInput | Prisma.ProjectUpdateManyWithWhereWithoutMaterialsInput[]
-  deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
-}
-
-export type ProjectUncheckedUpdateManyWithoutMaterialsNestedInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutMaterialsInput, Prisma.ProjectUncheckedCreateWithoutMaterialsInput> | Prisma.ProjectCreateWithoutMaterialsInput[] | Prisma.ProjectUncheckedCreateWithoutMaterialsInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutMaterialsInput | Prisma.ProjectCreateOrConnectWithoutMaterialsInput[]
-  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutMaterialsInput | Prisma.ProjectUpsertWithWhereUniqueWithoutMaterialsInput[]
-  set?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  disconnect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  delete?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutMaterialsInput | Prisma.ProjectUpdateWithWhereUniqueWithoutMaterialsInput[]
-  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutMaterialsInput | Prisma.ProjectUpdateManyWithWhereWithoutMaterialsInput[]
-  deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
-}
-
-export type ProjectCreateWithoutMaterialsInput = {
+export type ProjectCreateWithoutMaterialRequestsInput = {
   name: string
   description?: string | null
   status: number
@@ -484,7 +455,7 @@ export type ProjectCreateWithoutMaterialsInput = {
   realFinishDate?: Date | string | null
 }
 
-export type ProjectUncheckedCreateWithoutMaterialsInput = {
+export type ProjectUncheckedCreateWithoutMaterialRequestsInput = {
   id?: number
   name: string
   description?: string | null
@@ -494,41 +465,23 @@ export type ProjectUncheckedCreateWithoutMaterialsInput = {
   realFinishDate?: Date | string | null
 }
 
-export type ProjectCreateOrConnectWithoutMaterialsInput = {
+export type ProjectCreateOrConnectWithoutMaterialRequestsInput = {
   where: Prisma.ProjectWhereUniqueInput
-  create: Prisma.XOR<Prisma.ProjectCreateWithoutMaterialsInput, Prisma.ProjectUncheckedCreateWithoutMaterialsInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutMaterialRequestsInput, Prisma.ProjectUncheckedCreateWithoutMaterialRequestsInput>
 }
 
-export type ProjectUpsertWithWhereUniqueWithoutMaterialsInput = {
-  where: Prisma.ProjectWhereUniqueInput
-  update: Prisma.XOR<Prisma.ProjectUpdateWithoutMaterialsInput, Prisma.ProjectUncheckedUpdateWithoutMaterialsInput>
-  create: Prisma.XOR<Prisma.ProjectCreateWithoutMaterialsInput, Prisma.ProjectUncheckedCreateWithoutMaterialsInput>
+export type ProjectUpsertWithoutMaterialRequestsInput = {
+  update: Prisma.XOR<Prisma.ProjectUpdateWithoutMaterialRequestsInput, Prisma.ProjectUncheckedUpdateWithoutMaterialRequestsInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutMaterialRequestsInput, Prisma.ProjectUncheckedCreateWithoutMaterialRequestsInput>
+  where?: Prisma.ProjectWhereInput
 }
 
-export type ProjectUpdateWithWhereUniqueWithoutMaterialsInput = {
-  where: Prisma.ProjectWhereUniqueInput
-  data: Prisma.XOR<Prisma.ProjectUpdateWithoutMaterialsInput, Prisma.ProjectUncheckedUpdateWithoutMaterialsInput>
+export type ProjectUpdateToOneWithWhereWithoutMaterialRequestsInput = {
+  where?: Prisma.ProjectWhereInput
+  data: Prisma.XOR<Prisma.ProjectUpdateWithoutMaterialRequestsInput, Prisma.ProjectUncheckedUpdateWithoutMaterialRequestsInput>
 }
 
-export type ProjectUpdateManyWithWhereWithoutMaterialsInput = {
-  where: Prisma.ProjectScalarWhereInput
-  data: Prisma.XOR<Prisma.ProjectUpdateManyMutationInput, Prisma.ProjectUncheckedUpdateManyWithoutMaterialsInput>
-}
-
-export type ProjectScalarWhereInput = {
-  AND?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
-  OR?: Prisma.ProjectScalarWhereInput[]
-  NOT?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
-  id?: Prisma.IntFilter<"Project"> | number
-  name?: Prisma.StringFilter<"Project"> | string
-  description?: Prisma.StringNullableFilter<"Project"> | string | null
-  status?: Prisma.IntFilter<"Project"> | number
-  isActive?: Prisma.BoolFilter<"Project"> | boolean
-  finishDateProgrammed?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
-  realFinishDate?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
-}
-
-export type ProjectUpdateWithoutMaterialsInput = {
+export type ProjectUpdateWithoutMaterialRequestsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.IntFieldUpdateOperationsInput | number
@@ -537,17 +490,7 @@ export type ProjectUpdateWithoutMaterialsInput = {
   realFinishDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
-export type ProjectUncheckedUpdateWithoutMaterialsInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.IntFieldUpdateOperationsInput | number
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  finishDateProgrammed?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  realFinishDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-}
-
-export type ProjectUncheckedUpdateManyWithoutMaterialsInput = {
+export type ProjectUncheckedUpdateWithoutMaterialRequestsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -563,11 +506,11 @@ export type ProjectUncheckedUpdateManyWithoutMaterialsInput = {
  */
 
 export type ProjectCountOutputType = {
-  materials: number
+  materialRequests: number
 }
 
 export type ProjectCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  materials?: boolean | ProjectCountOutputTypeCountMaterialsArgs
+  materialRequests?: boolean | ProjectCountOutputTypeCountMaterialRequestsArgs
 }
 
 /**
@@ -583,8 +526,8 @@ export type ProjectCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exte
 /**
  * ProjectCountOutputType without action
  */
-export type ProjectCountOutputTypeCountMaterialsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.MaterialWhereInput
+export type ProjectCountOutputTypeCountMaterialRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MaterialRequestWhereInput
 }
 
 
@@ -596,7 +539,7 @@ export type ProjectSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   isActive?: boolean
   finishDateProgrammed?: boolean
   realFinishDate?: boolean
-  materials?: boolean | Prisma.Project$materialsArgs<ExtArgs>
+  materialRequests?: boolean | Prisma.Project$materialRequestsArgs<ExtArgs>
   _count?: boolean | Prisma.ProjectCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
@@ -632,7 +575,7 @@ export type ProjectSelectScalar = {
 
 export type ProjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "status" | "isActive" | "finishDateProgrammed" | "realFinishDate", ExtArgs["result"]["project"]>
 export type ProjectInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  materials?: boolean | Prisma.Project$materialsArgs<ExtArgs>
+  materialRequests?: boolean | Prisma.Project$materialRequestsArgs<ExtArgs>
   _count?: boolean | Prisma.ProjectCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProjectIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -641,7 +584,7 @@ export type ProjectIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
 export type $ProjectPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Project"
   objects: {
-    materials: Prisma.$MaterialPayload<ExtArgs>[]
+    materialRequests: Prisma.$MaterialRequestPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1045,7 +988,7 @@ readonly fields: ProjectFieldRefs;
  */
 export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  materials<T extends Prisma.Project$materialsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$materialsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MaterialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  materialRequests<T extends Prisma.Project$materialRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$materialRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MaterialRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1475,27 +1418,27 @@ export type ProjectDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
- * Project.materials
+ * Project.materialRequests
  */
-export type Project$materialsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Project$materialRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Material
+   * Select specific fields to fetch from the MaterialRequest
    */
-  select?: Prisma.MaterialSelect<ExtArgs> | null
+  select?: Prisma.MaterialRequestSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Material
+   * Omit specific fields from the MaterialRequest
    */
-  omit?: Prisma.MaterialOmit<ExtArgs> | null
+  omit?: Prisma.MaterialRequestOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.MaterialInclude<ExtArgs> | null
-  where?: Prisma.MaterialWhereInput
-  orderBy?: Prisma.MaterialOrderByWithRelationInput | Prisma.MaterialOrderByWithRelationInput[]
-  cursor?: Prisma.MaterialWhereUniqueInput
+  include?: Prisma.MaterialRequestInclude<ExtArgs> | null
+  where?: Prisma.MaterialRequestWhereInput
+  orderBy?: Prisma.MaterialRequestOrderByWithRelationInput | Prisma.MaterialRequestOrderByWithRelationInput[]
+  cursor?: Prisma.MaterialRequestWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.MaterialScalarFieldEnum | Prisma.MaterialScalarFieldEnum[]
+  distinct?: Prisma.MaterialRequestScalarFieldEnum | Prisma.MaterialRequestScalarFieldEnum[]
 }
 
 /**

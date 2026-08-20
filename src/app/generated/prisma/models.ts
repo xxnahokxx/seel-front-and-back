@@ -10,4 +10,5 @@
  */
 export type * from './models/Project'
 export type * from './models/Material'
+export type * from './models/MaterialRequest'
 export type * from './commonInputTypes'

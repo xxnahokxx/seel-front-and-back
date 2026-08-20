@@ -51,3 +51,8 @@ export type Project = Prisma.ProjectModel
  * 
  */
 export type Material = Prisma.MaterialModel
+/**
+ * Model MaterialRequest
+ * 
+ */
+export type MaterialRequest = Prisma.MaterialRequestModel

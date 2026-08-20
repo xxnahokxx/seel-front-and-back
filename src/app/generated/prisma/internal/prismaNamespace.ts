@@ -398,7 +398,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   Project: 'Project',
-  Material: 'Material'
+  Material: 'Material',
+  MaterialRequest: 'MaterialRequest'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -414,7 +415,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "project" | "material"
+    modelProps: "project" | "material" | "materialRequest"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -566,6 +567,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    MaterialRequest: {
+      payload: Prisma.$MaterialRequestPayload<ExtArgs>
+      fields: Prisma.MaterialRequestFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MaterialRequestFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaterialRequestPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MaterialRequestFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaterialRequestPayload>
+        }
+        findFirst: {
+          args: Prisma.MaterialRequestFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaterialRequestPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MaterialRequestFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaterialRequestPayload>
+        }
+        findMany: {
+          args: Prisma.MaterialRequestFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaterialRequestPayload>[]
+        }
+        create: {
+          args: Prisma.MaterialRequestCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaterialRequestPayload>
+        }
+        createMany: {
+          args: Prisma.MaterialRequestCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MaterialRequestCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaterialRequestPayload>[]
+        }
+        delete: {
+          args: Prisma.MaterialRequestDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaterialRequestPayload>
+        }
+        update: {
+          args: Prisma.MaterialRequestUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaterialRequestPayload>
+        }
+        deleteMany: {
+          args: Prisma.MaterialRequestDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MaterialRequestUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MaterialRequestUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaterialRequestPayload>[]
+        }
+        upsert: {
+          args: Prisma.MaterialRequestUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaterialRequestPayload>
+        }
+        aggregate: {
+          args: Prisma.MaterialRequestAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMaterialRequest>
+        }
+        groupBy: {
+          args: Prisma.MaterialRequestGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MaterialRequestGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MaterialRequestCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MaterialRequestCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -628,6 +703,23 @@ export const MaterialScalarFieldEnum = {
 } as const
 
 export type MaterialScalarFieldEnum = (typeof MaterialScalarFieldEnum)[keyof typeof MaterialScalarFieldEnum]
+
+
+export const MaterialRequestScalarFieldEnum = {
+  id: 'id',
+  projectId: 'projectId',
+  materialId: 'materialId',
+  status: 'status',
+  requestDate: 'requestDate',
+  deliveryDate: 'deliveryDate',
+  amount: 'amount',
+  deliveryAmount: 'deliveryAmount',
+  requestingUserId: 'requestingUserId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MaterialRequestScalarFieldEnum = (typeof MaterialRequestScalarFieldEnum)[keyof typeof MaterialRequestScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -875,6 +967,7 @@ export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaC
 export type GlobalOmitConfig = {
   project?: Prisma.ProjectOmit
   material?: Prisma.MaterialOmit
+  materialRequest?: Prisma.MaterialRequestOmit
 }
 
 /* Types for Logging */
